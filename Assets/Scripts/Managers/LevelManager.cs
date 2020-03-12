@@ -12,6 +12,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private int levelOverrideIndex;
     [SerializeField] private bool levelOverride;
 
+    [SerializeField] private bool designMode;
+
     private string currentLevel;
 
     private void Awake() {
@@ -30,12 +32,14 @@ public class LevelManager : MonoBehaviour
     }
 
     public void LoadLevel(string name) {
-        if(!string.IsNullOrWhiteSpace(currentLevel)) {
-            SceneManager.UnloadSceneAsync(currentLevel);
-        }
+        if(!designMode) {
+            if(!string.IsNullOrWhiteSpace(currentLevel)) {
+                SceneManager.UnloadSceneAsync(currentLevel);
+            }
 
-        currentLevel = name;
-        SceneManager.LoadScene(name, LoadSceneMode.Additive);
+            currentLevel = name;
+            SceneManager.LoadScene(name, LoadSceneMode.Additive);
+        }
     }
 
     public void UnloadLevel() {
