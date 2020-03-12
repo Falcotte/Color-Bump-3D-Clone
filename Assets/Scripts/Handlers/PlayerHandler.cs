@@ -7,7 +7,7 @@ public class PlayerHandler : MonoBehaviour {
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float sensitivity;
 
-    void Update() {
+    void FixedUpdate() {
         HandleControls();
     }
 
