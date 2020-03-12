@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
         SetFrameRate();
     }
 
+    private void Start() {
+        LevelManager.Instance.LoadLevel(LevelManager.Instance.GetNextLevel());
+    }
+
     private void SetFrameRate() {
         QualitySettings.vSyncCount = 0;  // VSync must be disabled
         Application.targetFrameRate = 60;
