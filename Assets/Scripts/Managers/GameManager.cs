@@ -1,22 +1,39 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
-public class GameManager : MonoBehaviour {
-    public static GameManager Instance { get; private set; }
+public enum GameStates {
+    MainMenu,
+    Gameplay,
+    LevelEnd
+}
 
-    private void Awake() {
-        if(Instance != null && Instance != this) {
-            Destroy(gameObject);
+public class GameManager : MonoSingleton<GameManager> {
+    public static UnityAction OnGameStart, OnGameEnd;
+
+    private GameStates currentState;
+    public GameStates CurrentState {
+        get => currentState;
+        set {
+            if(currentState != value) {
+                currentState = value;
+            }
         }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+    }
+
+    protected new void Awake() {
+        base.Awake();
 
         SetFrameRate();
     }
 
     private void Start() {
+        CurrentState = GameStates.MainMenu;
         LevelManager.Instance.LoadLevel(LevelManager.Instance.GetNextLevel());
+    }
+
+    public void StartGame() {
+        OnGameStart?.Invoke();
+        CurrentState = GameStates.Gameplay;
     }
 
     private void SetFrameRate() {
