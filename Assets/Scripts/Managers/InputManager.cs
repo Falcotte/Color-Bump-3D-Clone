@@ -1,10 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class InputManager : MonoBehaviour {
-    public static InputManager Instance { get; private set; }
-
+public class InputManager : MonoSingleton<InputManager> {
     private Vector2 previousMousePos;
 
     private Vector2 dragDelta;
@@ -13,12 +9,8 @@ public class InputManager : MonoBehaviour {
     private bool isTouching;
     public static bool IsTouching => Instance.isTouching;
 
-    private void Awake() {
-        if(Instance != null && Instance != this) {
-            Destroy(gameObject);
-        }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+    protected new void Awake() {
+        base.Awake();
     }
 
     private void Update() {

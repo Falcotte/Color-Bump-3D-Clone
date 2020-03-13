@@ -1,12 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelManager : MonoBehaviour
-{
-    public static LevelManager Instance { get; private set; }
-
+public class LevelManager : MonoSingleton<LevelManager> {
     [SerializeField, NaughtyAttributes.ReorderableList] private List<string> levels;
 
     [SerializeField] private int levelOverrideIndex;
@@ -16,12 +12,8 @@ public class LevelManager : MonoBehaviour
 
     private string currentLevel;
 
-    private void Awake() {
-        if(Instance != null && Instance != this) {
-            Destroy(gameObject);
-        }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+    protected new void Awake() {
+        base.Awake();
     }
 
     public string GetNextLevel() {
