@@ -15,7 +15,7 @@ public class Obstacle : MonoBehaviour {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Player")) {
             if(isLethal) {
                 Debug.Log("Game over");
-                GameManager.Instance.CurrentState = GameStates.LevelEnd;
+                collision.gameObject.GetComponent<PlayerHandler>().Die();
             }
         }
     }

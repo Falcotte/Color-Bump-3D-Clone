@@ -526,13 +526,13 @@ PrefabInstance:
     - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
         type: 3}
       propertyPath: isLethal
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4961293816728811154, guid: f33822e9022c81540af281dd14b065cc,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e8dd1ae92a7c4814f8d60e26f64c5cda, type: 2}
+      objectReference: {fileID: 2100000, guid: 9eb4b14d037a05746a8b361be06f03d6, type: 2}
     - target: {fileID: 4961293817279783717, guid: f33822e9022c81540af281dd14b065cc,
         type: 3}
       propertyPath: m_LocalPosition.x

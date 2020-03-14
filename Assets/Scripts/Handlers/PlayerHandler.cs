@@ -3,7 +3,13 @@
 #pragma warning disable 0649
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerHandler : MonoBehaviour {
+    [SerializeField] private Renderer[] visualRenderers;
+    public Renderer[] VisualRenderer => visualRenderers;
+
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private GameObject[] parts;
+
+    [SerializeField] private TrailRenderer trail;
 
     private float inputXSensitivity => SettingsManager.GameSettings.InputXSensitivity;
     private float inputYSensitivity => SettingsManager.GameSettings.InputYSensitivity;
@@ -22,9 +28,11 @@ public class PlayerHandler : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        HandleControls();
-        SetVelocity();
-        Move();
+        if(GameManager.Instance.CurrentState == GameStates.Gameplay) {
+            HandleControls();
+            SetVelocity();
+            Move();
+        }
     }
 
     private void HandleControls() {
@@ -83,5 +91,25 @@ public class PlayerHandler : MonoBehaviour {
 
     private void Move() {
         rb.velocity = currentVelocity;
+    }
+
+    public void SetColor() {
+        foreach(Renderer visualRenderer in visualRenderers) {
+            visualRenderer.sharedMaterial.color = LevelSettings.Level.GetPlayerColor(0);
+        }
+    }
+
+    public void Die() {
+        visualRenderers[0].enabled = false;
+        GetComponent<SphereCollider>().enabled = false;
+        trail.enabled = false;
+
+        foreach(GameObject part in parts) {
+            part.SetActive(true);
+            part.GetComponent<Rigidbody>().velocity = currentVelocity;
+        }
+
+        rb.velocity = Vector3.zero;
+        GameManager.Instance.CurrentState = GameStates.LevelEnd;
     }
 }
