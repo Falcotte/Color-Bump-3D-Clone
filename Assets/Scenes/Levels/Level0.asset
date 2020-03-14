@@ -13,7 +13,13 @@ MonoBehaviour:
   m_Name: Level0
   m_EditorClassIdentifier: 
   length: 0
-  groundColors: []
-  backgroundColors: []
-  playerColor: []
-  obstacleColor: []
+  groundColors:
+  - {r: 1, g: 1, b: 1, a: 1}
+  boundaryColors:
+  - {r: 1, g: 0.62084186, b: 0.26274514, a: 1}
+  backgroundColors:
+  - {r: 0.27100393, g: 0.42242694, b: 0.6603774, a: 1}
+  playerColors:
+  - {r: 0.53333336, g: 0.6, b: 0.79215693, a: 1}
+  obstacleColors:
+  - {r: 0.8207547, g: 0.41424885, b: 0.48583367, a: 1}

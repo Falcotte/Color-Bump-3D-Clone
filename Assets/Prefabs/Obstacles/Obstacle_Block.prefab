@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e8dd1ae92a7c4814f8d60e26f64c5cda, type: 2}
+  - {fileID: 2100000, guid: 9eb4b14d037a05746a8b361be06f03d6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -153,6 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c117ae0406803764fa53182aeefea730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visualColor: {r: 0.6792453, g: 0.37486652, b: 0.37486652, a: 1}
   visualRenderer: {fileID: 4961293816728811154}
   isLethal: 1
+  obstacleMaterial: {fileID: 2100000, guid: e8dd1ae92a7c4814f8d60e26f64c5cda, type: 2}
+  obstacleLethalMaterial: {fileID: 2100000, guid: 9eb4b14d037a05746a8b361be06f03d6,
+    type: 2}
