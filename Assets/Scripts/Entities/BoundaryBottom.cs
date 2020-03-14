@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+#pragma warning disable 0649
 public class BoundaryBottom : MonoBehaviour {
     [SerializeField] private Rigidbody rb;
     private float velocity => SettingsManager.GameSettings.MinVelocity;

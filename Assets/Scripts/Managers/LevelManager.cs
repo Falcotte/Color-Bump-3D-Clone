@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+#pragma warning disable 0649
 public class LevelManager : MonoSingleton<LevelManager> {
     [SerializeField, NaughtyAttributes.ReorderableList] private List<string> levels;
 
