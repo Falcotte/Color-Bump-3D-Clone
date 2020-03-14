@@ -39,7 +39,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4961293816728811156}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &4961293816728811154
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -88,10 +88,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4961293817279783717}
   - component: {fileID: 8716141254184446220}
-  - component: {fileID: 8790250648014922603}
+  - component: {fileID: 592573316365258778}
   - component: {fileID: 2776807663013620197}
   m_Layer: 13
-  m_Name: Obstacle_Block
+  m_Name: Obstacle_Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,8 +128,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &8790250648014922603
-BoxCollider:
+--- !u!135 &592573316365258778
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -139,7 +139,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.25, z: 0.25}
+  m_Radius: 0.125
   m_Center: {x: 0, y: 0.125, z: 0}
 --- !u!114 &2776807663013620197
 MonoBehaviour:

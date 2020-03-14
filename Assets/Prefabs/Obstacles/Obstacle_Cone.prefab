@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4961293816728811156}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.125, z: 0}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 4961293817279783717}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &4961293816728811153
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -39,7 +39,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4961293816728811156}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 3613567641014311022, guid: 58a9fdc83cad08945a1744f17c8016a0, type: 3}
 --- !u!23 &4961293816728811154
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -88,10 +88,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4961293817279783717}
   - component: {fileID: 8716141254184446220}
-  - component: {fileID: 8790250648014922603}
+  - component: {fileID: 1314115396709365302}
   - component: {fileID: 2776807663013620197}
   m_Layer: 13
-  m_Name: Obstacle_Block
+  m_Name: Obstacle_Cone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,7 +128,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &8790250648014922603
+--- !u!65 &1314115396709365302
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,8 +139,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.25, z: 0.25}
-  m_Center: {x: 0, y: 0.125, z: 0}
+  m_Size: {x: 0.3, y: 0.5, z: 0.3}
+  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!114 &2776807663013620197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +156,7 @@ MonoBehaviour:
   visualRenderer: {fileID: 4961293816728811154}
   rb: {fileID: 8716141254184446220}
   isLethal: 1
+  isMoving: 0
   obstacleMaterial: {fileID: 2100000, guid: e8dd1ae92a7c4814f8d60e26f64c5cda, type: 2}
   obstacleLethalMaterial: {fileID: 2100000, guid: 9eb4b14d037a05746a8b361be06f03d6,
     type: 2}

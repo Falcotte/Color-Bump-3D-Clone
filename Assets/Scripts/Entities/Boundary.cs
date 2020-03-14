@@ -32,8 +32,8 @@ public class Boundary : MonoBehaviour {
             boundaryLeft.gameObject.layer = LayerMask.NameToLayer("BoundaryHigh");
             boundaryRight.gameObject.layer = LayerMask.NameToLayer("BoundaryHigh");
         }
-        boundaryLeft.localPosition = new Vector3(-3, 0, transform.position.z + boundaryLength / 2f);
-        boundaryRight.localPosition = new Vector3(3, 0, transform.position.z + boundaryLength / 2f);
+        boundaryLeft.localPosition = new Vector3(-3, 0, boundaryLength / 2f);
+        boundaryRight.localPosition = new Vector3(3, 0, boundaryLength / 2f);
     }
 
     public void SetBoundaryColor() {

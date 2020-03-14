@@ -1,22 +1,35 @@
 ﻿using UnityEngine;
+using DG.Tweening;
 
 #pragma warning disable 0649
 public class Obstacle : MonoBehaviour {
     [SerializeField] private Renderer visualRenderer;
     public Renderer VisualRenderer => visualRenderer;
 
+    [SerializeField] private Rigidbody rb;
+
     [SerializeField] private bool isLethal;
     public bool IsLethal => isLethal;
+
+    [SerializeField] private bool isMoving;
+    public bool IsMoving => isMoving;
 
     [SerializeField] private Material obstacleMaterial;
     [SerializeField] private Material obstacleLethalMaterial;
 
     private void OnCollisionEnter(Collision collision) {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Player")) {
+            rb.useGravity = true;
+
             if(isLethal) {
                 Debug.Log("Game over");
                 collision.gameObject.GetComponent<PlayerHandler>().Die();
             }
+        }
+
+        else if(collision.gameObject.layer == LayerMask.NameToLayer("Obstacle") && isMoving) {
+            DOTween.Kill(rb);
+            rb.useGravity = true;
         }
     }
 
