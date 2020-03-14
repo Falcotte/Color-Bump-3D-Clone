@@ -266,6 +266,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4961293816728811154, guid: f33822e9022c81540af281dd14b065cc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e8dd1ae92a7c4814f8d60e26f64c5cda, type: 2}
     - target: {fileID: 4961293817279783717, guid: f33822e9022c81540af281dd14b065cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -326,6 +331,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obstacle_Block (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8716141254184446220, guid: f33822e9022c81540af281dd14b065cc,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f33822e9022c81540af281dd14b065cc, type: 3}
 --- !u!1001 &1296969124
@@ -335,6 +345,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
+        type: 3}
+      propertyPath: visualColor.r
+      value: 0.6792453
+      objectReference: {fileID: 0}
+    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
+        type: 3}
+      propertyPath: visualColor.g
+      value: 0.37486652
+      objectReference: {fileID: 0}
+    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
+        type: 3}
+      propertyPath: visualColor.b
+      value: 0.37486652
+      objectReference: {fileID: 0}
+    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
+        type: 3}
+      propertyPath: visualColor.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4961293817279783717, guid: f33822e9022c81540af281dd14b065cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -394,6 +424,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Obstacle_Block (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716141254184446220, guid: f33822e9022c81540af281dd14b065cc,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f33822e9022c81540af281dd14b065cc, type: 3}
@@ -464,6 +499,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obstacle_Block (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8716141254184446220, guid: f33822e9022c81540af281dd14b065cc,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f33822e9022c81540af281dd14b065cc, type: 3}
 --- !u!1001 &1758416765
@@ -532,6 +572,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Obstacle_Block (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716141254184446220, guid: f33822e9022c81540af281dd14b065cc,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f33822e9022c81540af281dd14b065cc, type: 3}
