@@ -15,11 +15,11 @@ TagManager:
   - 
   - BoundaryLow
   - BoundaryHigh
+  - BoundaryBottom
   - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Obstacle
+  - LethalObstacle
   - 
   - 
   - 

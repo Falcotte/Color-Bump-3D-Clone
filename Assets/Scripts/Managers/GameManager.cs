@@ -29,6 +29,7 @@ public class GameManager : MonoSingleton<GameManager> {
     private void Start() {
         CurrentState = GameStates.MainMenu;
         LevelManager.Instance.LoadLevel(LevelManager.Instance.GetNextLevel());
+        StartGame();
     }
 
     public void StartGame() {
