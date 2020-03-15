@@ -21,19 +21,26 @@ public class PlayerHandler : MonoBehaviour {
 
     private float levelLength => LevelSettings.Level.GetLevelLength();
     private float levelStartPos = 5f;
+    private Vector3 playerStartPos;
 
     [SerializeField] private int colorIndex;
 
     private void OnEnable() {
         GameManager.OnGameStart += SetInitialVelocity;
+        GameManager.OnGameReset += ResetPlayer;
     }
 
     private void OnDisable() {
         GameManager.OnGameStart -= SetInitialVelocity;
+        GameManager.OnGameReset -= ResetPlayer;
+    }
+
+    private void Start() {
+        playerStartPos = transform.position;
     }
 
     private void Update() {
-       if(GameManager.Instance.CurrentState == GameStates.Gameplay) {
+        if(GameManager.Instance.CurrentState == GameStates.Gameplay) {
             float levelCompletionPercentage = Mathf.Clamp01((transform.position.z - levelStartPos) / levelLength);
             UIManager.Instance.SetProgress(levelCompletionPercentage);
         }
@@ -118,8 +125,24 @@ public class PlayerHandler : MonoBehaviour {
         }
     }
 
+    private void ResetPlayer() {
+        transform.position = playerStartPos;
+        currentVelocity = Vector3.zero;
+        rb.velocity = Vector3.zero;
+        AdjustTimeScale(false);
+
+        visualRenderers[0].enabled = true;
+        GetComponent<SphereCollider>().enabled = true;
+        trail.enabled = true;
+
+        foreach(GameObject part in parts) {
+            part.SetActive(false);
+            part.GetComponent<Rigidbody>().velocity = currentVelocity;
+        }
+    }
+
     public void Die() {
-        SlowDownTime();
+        AdjustTimeScale(true);
 
         visualRenderers[0].enabled = false;
         GetComponent<SphereCollider>().enabled = false;
@@ -132,11 +155,19 @@ public class PlayerHandler : MonoBehaviour {
 
         rb.velocity = Vector3.zero;
         GameManager.Instance.CurrentState = GameStates.LevelEnd;
+
+        UIManager.Instance.SetLevelEndPanelVisibility(true);
     }
 
-    private void SlowDownTime() {
+    private void AdjustTimeScale(bool slowDown) {
         //TODO: Can add slow down scale to game settings
-        Time.timeScale = .05f;
-        Time.fixedDeltaTime = .05f * 0.01666667f;
+        if(slowDown) {
+            Time.timeScale = .05f;
+            Time.fixedDeltaTime = .05f * 0.01666667f;
+        }
+        else {
+            Time.timeScale = 1f;
+            Time.fixedDeltaTime = 0.01666667f;
+        }
     }
 }

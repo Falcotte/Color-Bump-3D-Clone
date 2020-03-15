@@ -12,12 +12,27 @@ public class CameraHandler : MonoSingleton<CameraHandler> {
     private float colorChangeDuration = 2f;
     private float timer;
 
+    private Vector3 startPosition;
+
     protected new void Awake() {
         base.Awake();
     }
 
+    private void OnEnable() {
+        GameManager.OnGameReset += ResetCameraPosition;
+    }
+
+    private void OnDisable() {
+        GameManager.OnGameReset -= ResetCameraPosition;
+    }
+
     private void Start() {
+        startPosition = transform.position;
         currentColorIndex = GameManager.Instance.currentBackgroundColorIndex;
+    }
+
+    private void ResetCameraPosition() {
+        transform.position = startPosition;
     }
 
     private void Update() {

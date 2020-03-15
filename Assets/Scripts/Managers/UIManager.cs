@@ -21,10 +21,16 @@ public class UIManager : MonoSingleton<UIManager> {
 
     private void OnEnable() {
         GameManager.OnGameStart += SetHandImageOff;
+        GameManager.OnGameReset += SetLevelEndPanelVisibilityOff;
     }
 
     private void OnDisable() {
         GameManager.OnGameStart -= SetHandImageOff;
+        GameManager.OnGameReset -= SetLevelEndPanelVisibilityOff;
+    }
+
+    private void SetLevelEndPanelVisibilityOff() {
+        SetLevelEndPanelVisibility(false);
     }
 
     public void SetLevelEndPanelVisibility(bool visible) {

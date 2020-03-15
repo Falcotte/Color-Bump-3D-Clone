@@ -8,7 +8,7 @@ public enum GameStates {
 }
 
 public class GameManager : MonoSingleton<GameManager> {
-    public static UnityAction OnGameStart, OnGameEnd;
+    public static UnityAction OnGameStart, OnGameEnd, OnGameReset;
 
     private GameStates currentState;
     public GameStates CurrentState {
@@ -36,14 +36,26 @@ public class GameManager : MonoSingleton<GameManager> {
     }
 
     private void Update() {
-        if(Input.GetMouseButtonDown(0) && CurrentState == GameStates.MainMenu) {
-            StartGame();
+        if(Input.GetMouseButtonDown(0)) {
+            if(CurrentState == GameStates.MainMenu) {
+                StartGame();
+            }
+            else if(currentState == GameStates.LevelEnd) {
+                ResetGame();
+            }
         }
     }
 
     public void StartGame() {
         OnGameStart?.Invoke();
         CurrentState = GameStates.Gameplay;
+    }
+
+    private void ResetGame() {
+        CurrentState = GameStates.MainMenu;
+        LevelManager.Instance.LoadLevel(LevelManager.Instance.GetNextLevel());
+
+        OnGameReset?.Invoke();
     }
 
     private void SetFrameRate() {
