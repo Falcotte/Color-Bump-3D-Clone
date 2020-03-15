@@ -19,6 +19,9 @@ public class PlayerHandler : MonoBehaviour {
     private Vector3 inputVector;
     private Vector3 currentVelocity;
 
+    private float levelLength => LevelSettings.Level.GetLevelLength();
+    private float levelStartPos = 5f;
+
     [SerializeField] private int colorIndex;
 
     private void OnEnable() {
@@ -27,6 +30,13 @@ public class PlayerHandler : MonoBehaviour {
 
     private void OnDisable() {
         GameManager.OnGameStart -= SetInitialVelocity;
+    }
+
+    private void Update() {
+       if(GameManager.Instance.CurrentState == GameStates.Gameplay) {
+            float levelCompletionPercentage = Mathf.Clamp01((transform.position.z - levelStartPos) / levelLength);
+            UIManager.Instance.SetProgress(levelCompletionPercentage);
+        }
     }
 
     private void FixedUpdate() {

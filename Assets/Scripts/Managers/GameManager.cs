@@ -33,7 +33,12 @@ public class GameManager : MonoSingleton<GameManager> {
     private void Start() {
         CurrentState = GameStates.MainMenu;
         LevelManager.Instance.LoadLevel(LevelManager.Instance.GetNextLevel());
-        StartGame();
+    }
+
+    private void Update() {
+        if(Input.GetMouseButtonDown(0) && CurrentState == GameStates.MainMenu) {
+            StartGame();
+        }
     }
 
     public void StartGame() {
