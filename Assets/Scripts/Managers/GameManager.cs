@@ -20,6 +20,11 @@ public class GameManager : MonoSingleton<GameManager> {
         }
     }
 
+    public int currentGroundColorIndex;
+    public int currentBoundaryColorIndex;
+    public int currentBackgroundColorIndex;
+
+
     protected new void Awake() {
         base.Awake();
 

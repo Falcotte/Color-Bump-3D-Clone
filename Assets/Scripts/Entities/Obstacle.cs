@@ -17,6 +17,8 @@ public class Obstacle : MonoBehaviour {
     [SerializeField] private Material obstacleMaterial;
     [SerializeField] private Material obstacleLethalMaterial;
 
+    [SerializeField] private int colorIndex;
+
     private void OnCollisionEnter(Collision collision) {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Player")) {
             rb.useGravity = true;
@@ -27,9 +29,18 @@ public class Obstacle : MonoBehaviour {
             }
         }
 
-        else if(collision.gameObject.layer == LayerMask.NameToLayer("Obstacle") && isMoving) {
-            DOTween.Kill(rb);
+        else if(collision.gameObject.layer == LayerMask.NameToLayer("Obstacle")) {
+            if(isMoving) {
+                DOTween.Kill(transform);
+            }
             rb.useGravity = true;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if(other.gameObject.layer == LayerMask.NameToLayer("ColorChanger")) {
+            colorIndex++;
+            SetColor();
         }
     }
 
@@ -47,10 +58,21 @@ public class Obstacle : MonoBehaviour {
     }
     public void SetColor() {
         if(IsLethal) {
-            visualRenderer.sharedMaterial.color = LevelSettings.Level.GetObstacleColor(0);
+            visualRenderer.sharedMaterial.color = LevelSettings.Level.GetObstacleColor(colorIndex);
         }
         else {
-            visualRenderer.sharedMaterial.color = LevelSettings.Level.GetPlayerColor(0);
+            visualRenderer.sharedMaterial.color = LevelSettings.Level.GetPlayerColor(colorIndex);
+        }
+    }
+
+    private void OnDrawGizmos() {
+        if(LevelManager.Instance.ShowObstacleIcons) {
+            if(isLethal) {
+                Gizmos.DrawIcon(transform.position, "sv_icon_dot14_pix16_gizmo");
+            }
+            else {
+                Gizmos.DrawIcon(transform.position, "sv_icon_dot10_pix16_gizmo");
+            }
         }
     }
 }

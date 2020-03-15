@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9eb4b14d037a05746a8b361be06f03d6, type: 2}
+  - {fileID: 2100000, guid: e8dd1ae92a7c4814f8d60e26f64c5cda, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,7 +106,7 @@ Transform:
   m_GameObject: {fileID: 4961293817279783718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4961293816728811155}
   m_Father: {fileID: 0}
@@ -135,7 +135,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4961293817279783718}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: d15be68a3bf818041af1357afc33ac88, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -155,7 +155,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visualRenderer: {fileID: 4961293816728811154}
   rb: {fileID: 8716141254184446220}
-  isLethal: 1
+  isLethal: 0
+  isMoving: 0
   obstacleMaterial: {fileID: 2100000, guid: e8dd1ae92a7c4814f8d60e26f64c5cda, type: 2}
   obstacleLethalMaterial: {fileID: 2100000, guid: 9eb4b14d037a05746a8b361be06f03d6,
     type: 2}
+  colorIndex: 0

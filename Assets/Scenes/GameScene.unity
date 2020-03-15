@@ -293,6 +293,7 @@ MonoBehaviour:
   levelOverrideIndex: 0
   levelOverride: 0
   designMode: 1
+  showObstacleIcons: 1
 --- !u!114 &1512179553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,7 +399,7 @@ PrefabInstance:
     - target: {fileID: 8650534045968785616, guid: 6895a1400591982499510ec2b02ccbb7,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8650534045968785619, guid: 6895a1400591982499510ec2b02ccbb7,
         type: 3}

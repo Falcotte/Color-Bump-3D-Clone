@@ -12,6 +12,8 @@ public class GroundEditor : Editor {
     public override void OnInspectorGUI() {
         base.OnInspectorGUI();
 
-        ground.SetColor();
+        if(!Application.isPlaying) {
+            ground.SetColor();
+        }
     }
 }

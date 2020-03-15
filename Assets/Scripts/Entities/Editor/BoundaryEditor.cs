@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using UnityEngine;
+using UnityEditor;
 
 [CustomEditor(typeof(Boundary))]
 public class BoundaryEditor : Editor {
@@ -11,7 +12,9 @@ public class BoundaryEditor : Editor {
     public override void OnInspectorGUI() {
         base.OnInspectorGUI();
 
-        boundary.SetBoundaryDimensions();
-        boundary.SetBoundaryColor();
+        if(!Application.isPlaying) {
+            boundary.SetDimensions();
+            boundary.SetColor();
+        }
     }
 }

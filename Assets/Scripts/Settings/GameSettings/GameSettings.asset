@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dc0ce0ff2bb06d48a452ab193a6fed2, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  minVelocity: 5
+  minVelocity: 2
   deceleration: 20
   inputXSensitivity: 1.5
   inputYSensitivity: 3

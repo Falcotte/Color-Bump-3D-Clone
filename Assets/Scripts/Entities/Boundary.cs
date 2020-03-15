@@ -13,13 +13,52 @@ public class Boundary : MonoBehaviour {
     [SerializeField] private Renderer[] visualRenderers;
     public Renderer[] VisualRenderer => visualRenderers;
 
+    private int previousColorIndex;
+    private int currentColorIndex;
+    private bool changingColor;
+    private float colorChangeDuration = 2f;
+    private float timer;
+
+    private void Start() {
+        currentColorIndex = GameManager.Instance.currentBoundaryColorIndex;
+    }
+
+    private void Update() {
+        if(currentColorIndex != GameManager.Instance.currentBoundaryColorIndex) {
+            previousColorIndex = currentColorIndex;
+            currentColorIndex = GameManager.Instance.currentBoundaryColorIndex;
+            changingColor = true;
+        }
+
+        if(changingColor) {
+            if(timer <= colorChangeDuration) {
+                ChangeColor(previousColorIndex, timer);
+                timer += Time.deltaTime;
+            }
+            else {
+                ChangeColor(previousColorIndex, colorChangeDuration);
+                timer = 0f;
+                changingColor = false;
+            }
+        }
+    }
+
+    private void ChangeColor(int previousColorIndex, float timer) {
+        foreach(Renderer visualRenderer in visualRenderers) {
+            visualRenderer.sharedMaterial.color = Color.Lerp(LevelSettings.Level.GetBoundaryColor(previousColorIndex),
+                                                             LevelSettings.Level.GetBoundaryColor(GameManager.Instance.currentBoundaryColorIndex),
+                                                             timer / colorChangeDuration);
+        }
+    }
+
+    #region Editor Helper Methods
     [Button]
     public void SnapBoundaryPosition() {
         //TODO: Can be improved to snap to closer integer value
         transform.position = new Vector3(0, 0, Mathf.FloorToInt(transform.position.z));
     }
 
-    public void SetBoundaryDimensions() {
+    public void SetDimensions() {
         if(height == BoundaryHeight.Low) {
             boundaryLeft.localScale = new Vector3(0.12f, 0.12f, boundaryLength);
             boundaryRight.localScale = new Vector3(0.12f, 0.12f, boundaryLength);
@@ -36,9 +75,9 @@ public class Boundary : MonoBehaviour {
         boundaryRight.localPosition = new Vector3(3, 0, boundaryLength / 2f);
     }
 
-    public void SetBoundaryColor() {
+    public void SetColor() {
         foreach(Renderer visualRenderer in visualRenderers) {
-            visualRenderer.sharedMaterial.color = LevelSettings.Level.GetBoundaryColor(0);
+            visualRenderer.sharedMaterial.color = LevelSettings.Level.GetBoundaryColor(GameManager.Instance.currentBoundaryColorIndex);
         }
     }
 
@@ -56,4 +95,5 @@ public class Boundary : MonoBehaviour {
             UnityEditor.Handles.Label(transform.position, "Boundary High");
         }
     }
+    #endregion
 }

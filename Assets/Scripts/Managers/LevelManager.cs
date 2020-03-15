@@ -11,6 +11,9 @@ public class LevelManager : MonoSingleton<LevelManager> {
 
     [SerializeField] private bool designMode;
 
+    [SerializeField] private bool showObstacleIcons;
+    public bool ShowObstacleIcons => showObstacleIcons;
+
     private string currentLevel;
 
     protected new void Awake() {

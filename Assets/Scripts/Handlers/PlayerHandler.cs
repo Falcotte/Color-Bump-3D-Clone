@@ -19,6 +19,8 @@ public class PlayerHandler : MonoBehaviour {
     private Vector3 inputVector;
     private Vector3 currentVelocity;
 
+    [SerializeField] private int colorIndex;
+
     private void OnEnable() {
         GameManager.OnGameStart += SetInitialVelocity;
     }
@@ -93,13 +95,22 @@ public class PlayerHandler : MonoBehaviour {
         rb.velocity = currentVelocity;
     }
 
+    private void OnTriggerEnter(Collider other) {
+        if(other.gameObject.layer == LayerMask.NameToLayer("ColorChanger")) {
+            colorIndex++;
+            SetColor();
+        }
+    }
+
     public void SetColor() {
         foreach(Renderer visualRenderer in visualRenderers) {
-            visualRenderer.sharedMaterial.color = LevelSettings.Level.GetPlayerColor(0);
+            visualRenderer.sharedMaterial.color = LevelSettings.Level.GetPlayerColor(colorIndex);
         }
     }
 
     public void Die() {
+        SlowDownTime();
+
         visualRenderers[0].enabled = false;
         GetComponent<SphereCollider>().enabled = false;
         trail.enabled = false;
@@ -111,5 +122,11 @@ public class PlayerHandler : MonoBehaviour {
 
         rb.velocity = Vector3.zero;
         GameManager.Instance.CurrentState = GameStates.LevelEnd;
+    }
+
+    private void SlowDownTime() {
+        //TODO: Can add slow down scale to game settings
+        Time.timeScale = .05f;
+        Time.fixedDeltaTime = .05f * 0.01666667f;
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using UnityEngine;
+using UnityEditor;
 
 [CustomEditor(typeof(CameraHandler))]
 public class CameraHandlerEditor : Editor {
@@ -11,6 +12,8 @@ public class CameraHandlerEditor : Editor {
     public override void OnInspectorGUI() {
         base.OnInspectorGUI();
 
-        cameraHandler.SetColor();
+        if(!Application.isPlaying) {
+            cameraHandler.SetColor();
+        }
     }
 }

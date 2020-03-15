@@ -21,22 +21,22 @@ public class Level : ScriptableObject {
     }
 
     public Color GetGroundColor(int index) {
-        return groundColors[index];
+        return groundColors[index % groundColors.Count];
     }
 
     public Color GetBoundaryColor(int index) {
-        return boundaryColors[index];
+        return boundaryColors[index % boundaryColors.Count];
     }
 
     public Color GetBackgroundColor(int index) {
-        return backgroundColors[index];
+        return backgroundColors[index % boundaryColors.Count];
     }
 
     public Color GetPlayerColor(int index) {
-        return playerColors[index];
+        return playerColors[index % playerColors.Count];
     }
 
     public Color GetObstacleColor(int index) {
-        return obstacleColors[index];
+        return obstacleColors[index % obstacleColors.Count];
     }
 }
