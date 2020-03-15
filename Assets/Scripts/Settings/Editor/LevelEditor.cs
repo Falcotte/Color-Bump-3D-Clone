@@ -56,7 +56,9 @@ public class LevelEditor : Editor {
             int groundLength = 0;
 
             foreach(Ground ground in GameObject.FindObjectsOfType<Ground>()) {
-                groundLength += 20;
+                if(!ground.isAdditional) {
+                    groundLength += 20;
+                }
             }
 
             level.Length = groundLength;

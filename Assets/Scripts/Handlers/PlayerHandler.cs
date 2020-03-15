@@ -126,6 +126,12 @@ public class PlayerHandler : MonoBehaviour {
             colorIndex++;
             SetColor();
         }
+
+        else if(other.gameObject.layer == LayerMask.NameToLayer("FinishLine")) {
+            GameManager.Instance.LevelPassed = true;
+            UIManager.Instance.SetLevelEndPanelVisibility(true);
+            //GameManager.Instance.CurrentState = GameStates.LevelEnd;
+        }
     }
 
     public void SetColor() {

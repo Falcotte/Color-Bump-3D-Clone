@@ -11,6 +11,8 @@ public class Ground : MonoBehaviour {
     private float colorChangeDuration = 2f;
     private float timer;
 
+    public bool isAdditional;
+
     private void OnEnable() {
         Level.OnGroundColorChanged += SetColor;
     }
