@@ -24,6 +24,8 @@ public class GameManager : MonoSingleton<GameManager> {
     public int currentBoundaryColorIndex;
     public int currentBackgroundColorIndex;
 
+    public bool LevelPassed;
+
     protected new void Awake() {
         base.Awake();
 
@@ -48,6 +50,7 @@ public class GameManager : MonoSingleton<GameManager> {
 
     public void StartGame() {
         OnGameStart?.Invoke();
+        LevelPassed = false;
         CurrentState = GameStates.Gameplay;
     }
 

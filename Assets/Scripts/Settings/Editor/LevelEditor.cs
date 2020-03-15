@@ -33,7 +33,13 @@ public class LevelEditor : Editor {
                 level.ObstacleColorChanged();
                 level.PreviousObstacleColor = level.GetObstacleColor(0);
             }
+            if(level.PreviousLethalObstacleColor != level.GetLethalObstacleColor(0)) {
+                level.LethalObstacleColorChanged();
+                level.PreviousLethalObstacleColor = level.GetLethalObstacleColor(0);
+            }
         }
+
+        EditorGUILayout.Space();
 
         if(GUILayout.Button("Force Update Colors")) {
             level.GroundColorChanged();
@@ -41,6 +47,19 @@ public class LevelEditor : Editor {
             level.BackgroundColorChanged();
             level.PlayerColorChanged();
             level.ObstacleColorChanged();
+            level.LethalObstacleColorChanged();
+        }
+        
+        EditorGUILayout.Space();
+
+        if(GUILayout.Button("Update Level Length")) {
+            int groundLength = 0;
+
+            foreach(Ground ground in GameObject.FindObjectsOfType<Ground>()) {
+                groundLength += 20;
+            }
+
+            level.Length = groundLength;
         }
     }
 }

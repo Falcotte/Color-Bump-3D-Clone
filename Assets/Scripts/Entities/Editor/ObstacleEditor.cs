@@ -23,6 +23,17 @@ public class ObstacleEditor : Editor {
             }
         }
 
+        if(obstacle.IsRotating) {
+            if(obstacle.GetComponent<DOTweenAnimation>() == null) {
+                obstacle.gameObject.AddComponent<DOTweenAnimation>();
+            }
+        }
+        else {
+            if(obstacle.GetComponent<DOTweenAnimation>() != null) {
+                DestroyImmediate(obstacle.GetComponent<DOTweenAnimation>());
+            }
+        }
+
         obstacle.SetMaterial();
         obstacle.SetColor();
     }

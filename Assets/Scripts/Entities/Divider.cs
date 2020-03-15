@@ -17,7 +17,7 @@ public class Divider : MonoBehaviour {
 
         switch(positionPercentage) {
             case 0:
-                dividerText.text = "STAGE " + LevelSettings.Level.name.Substring(5);
+                dividerText.text = "STAGE " + (DataManager.Instance.Level + 1).ToString();
                 GetComponent<RectTransform>().localPosition = new Vector3(0, -35f, -0.2f);
                 break;
 

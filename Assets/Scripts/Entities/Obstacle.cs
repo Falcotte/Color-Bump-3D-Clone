@@ -2,6 +2,7 @@
 using DG.Tweening;
 
 #pragma warning disable 0649
+[ExecuteInEditMode]
 public class Obstacle : MonoBehaviour {
     [SerializeField] private Renderer visualRenderer;
     public Renderer VisualRenderer => visualRenderer;
@@ -14,23 +15,36 @@ public class Obstacle : MonoBehaviour {
     [SerializeField] private bool isMoving;
     public bool IsMoving => isMoving;
 
+    [SerializeField] private bool isRotating;
+    public bool IsRotating => isRotating;
+
     [SerializeField] private Material obstacleMaterial;
     [SerializeField] private Material obstacleLethalMaterial;
 
     [SerializeField] private int colorIndex;
+
+    private void OnEnable() {
+        Level.OnObstacleColorChanged += SetColor;
+        Level.OnLethalObstacleColorChanged += SetColor;
+    }
+
+    private void OnDisable() {
+        Level.OnObstacleColorChanged -= SetColor;
+        Level.OnLethalObstacleColorChanged -= SetColor;
+    }
 
     private void OnCollisionEnter(Collision collision) {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Player")) {
             rb.useGravity = true;
 
             if(isLethal) {
-                Debug.Log("Game over");
+                Debug.Log("Game Over");
                 collision.gameObject.GetComponent<PlayerHandler>().Die();
             }
         }
 
         else if(collision.gameObject.layer == LayerMask.NameToLayer("Obstacle")) {
-            if(isMoving) {
+            if(isMoving || isRotating) {
                 DOTween.Kill(transform);
             }
             rb.useGravity = true;
@@ -40,6 +54,7 @@ public class Obstacle : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.layer == LayerMask.NameToLayer("ColorChanger")) {
             colorIndex++;
+            ChangeMaterial();
             SetColor();
         }
     }
@@ -56,12 +71,26 @@ public class Obstacle : MonoBehaviour {
             }
         }
     }
-    public void SetColor() {
-        if(IsLethal) {
-            visualRenderer.sharedMaterial.color = LevelSettings.Level.GetObstacleColor(colorIndex);
+    
+    public void ChangeMaterial() {
+        if(isLethal) {
+            if(visualRenderer.material != obstacleMaterial) {
+                visualRenderer.material = obstacleMaterial;
+            }
         }
         else {
-            visualRenderer.sharedMaterial.color = LevelSettings.Level.GetPlayerColor(colorIndex);
+            if(visualRenderer.material != obstacleLethalMaterial) {
+                visualRenderer.material = obstacleLethalMaterial;
+            }
+        }
+    }
+
+    public void SetColor() {
+        if(IsLethal) {
+            visualRenderer.sharedMaterial.color = LevelSettings.Level.GetLethalObstacleColor(colorIndex);
+        }
+        else {
+            visualRenderer.sharedMaterial.color = LevelSettings.Level.GetObstacleColor(colorIndex);
         }
     }
 

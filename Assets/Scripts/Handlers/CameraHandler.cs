@@ -76,6 +76,8 @@ public class CameraHandler : MonoSingleton<CameraHandler> {
     }
 
     public void SetColor() {
-        mainCamera.backgroundColor = LevelSettings.Level.GetBackgroundColor(GameManager.Instance.currentBackgroundColorIndex);
+        if(LevelSettings.Level != null) {
+            mainCamera.backgroundColor = LevelSettings.Level.GetBackgroundColor(GameManager.Instance.currentBackgroundColorIndex);
+        }
     }
 }

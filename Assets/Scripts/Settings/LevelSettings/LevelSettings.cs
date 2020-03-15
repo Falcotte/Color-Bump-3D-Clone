@@ -6,7 +6,10 @@ using UnityEngine;
 public class LevelSettings : MonoSingleton<LevelSettings> {
     public static Level Level {
         get {
-            return Instance.level;
+            if(Instance != null) {
+                return Instance.level;
+            }
+            return null;
         }
     }
     public Level level;

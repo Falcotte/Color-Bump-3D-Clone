@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class Level : ScriptableObject {
     [Header("Level Properties")]
     [SerializeField] private float length;
-    public float PreviousLength { get; set; }
+    public float Length { get { return length; } set { length = value; } }
 
     [Header("Theme")]
     [SerializeField] private List<Color> groundColors = new List<Color>();
@@ -22,12 +22,15 @@ public class Level : ScriptableObject {
     public Color PreviousPlayerColor { get; set; }
     [SerializeField] private List<Color> obstacleColors = new List<Color>();
     public Color PreviousObstacleColor { get; set; }
+    [SerializeField] private List<Color> lethalObstacleColors = new List<Color>();
+    public Color PreviousLethalObstacleColor { get; set; }
 
     public static UnityAction OnGroundColorChanged,
                               OnBoundaryColorChanged,
                               OnBackgroundColorChanged,
                               OnPlayerColorChanged,
-                              OnObstacleColorChanged;
+                              OnObstacleColorChanged,
+                              OnLethalObstacleColorChanged;
 
     public float GetLevelLength() {
         return length;
@@ -85,6 +88,17 @@ public class Level : ScriptableObject {
     }
 
     public void ObstacleColorChanged() {
-        OnBoundaryColorChanged?.Invoke();
+        OnObstacleColorChanged?.Invoke();
+    }
+
+    public Color GetLethalObstacleColor(int index) {
+        if(lethalObstacleColors.Count > 0) {
+            return lethalObstacleColors[index % lethalObstacleColors.Count];
+        }
+        return Color.black;
+    }
+
+    public void LethalObstacleColorChanged() {
+        OnLethalObstacleColorChanged?.Invoke();
     }
 }

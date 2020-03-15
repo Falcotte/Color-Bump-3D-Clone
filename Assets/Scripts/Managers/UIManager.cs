@@ -6,7 +6,9 @@ using TMPro;
 using DG.Tweening;
 
 public class UIManager : MonoSingleton<UIManager> {
-    [SerializeField] private GameObject levelEndPanel;
+    [SerializeField] private GameObject levelWinPanel;
+    [SerializeField] private GameObject levelFailPanel;
+    [SerializeField] private TextMeshProUGUI stageText;
     [SerializeField] private Image progressBar;
     [SerializeField] private GameObject settingsButton;
     [SerializeField] private TextMeshProUGUI currentLevelText;
@@ -15,8 +17,8 @@ public class UIManager : MonoSingleton<UIManager> {
     [SerializeField] private Image handImage;
 
     private void Start() {
-        currentLevelText.text = (int.Parse(LevelSettings.Level.name.Substring(5)) + 1).ToString();
-        nextLevelText.text = (int.Parse(LevelSettings.Level.name.Substring(5)) + 2).ToString();
+        currentLevelText.text = (DataManager.Instance.Level + 1).ToString();
+        nextLevelText.text = (DataManager.Instance.Level + 2).ToString();
     }
 
     private void OnEnable() {
@@ -35,10 +37,21 @@ public class UIManager : MonoSingleton<UIManager> {
 
     public void SetLevelEndPanelVisibility(bool visible) {
         if(visible) {
-            levelEndPanel.SetActive(true);
+            if(GameManager.Instance.LevelPassed) {
+                levelWinPanel.SetActive(true);
+            }
+            else {
+                levelFailPanel.SetActive(true);
+                stageText.text = "STAGE " + (DataManager.Instance.Level + 1).ToString();
+            }
         }
         else {
-            levelEndPanel.SetActive(false);
+            if(GameManager.Instance.LevelPassed) {
+                levelWinPanel.SetActive(false);
+            }
+            else {
+                levelFailPanel.SetActive(false);
+            }
         }
     }
 

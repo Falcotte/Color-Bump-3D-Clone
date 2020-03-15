@@ -693,26 +693,11 @@ PrefabInstance:
       propertyPath: isMoving
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
-        type: 3}
-      propertyPath: colorIndex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
-        type: 3}
-      propertyPath: obstacleMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 46a829fe17360b840954e1f35cd1eb5b, type: 2}
-    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
-        type: 3}
-      propertyPath: obstacleLethalMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: c5d3de670d46de2478e0a241ee6463ac, type: 2}
     - target: {fileID: 4961293816728811154, guid: f33822e9022c81540af281dd14b065cc,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 46a829fe17360b840954e1f35cd1eb5b, type: 2}
+      objectReference: {fileID: 2100000, guid: e8dd1ae92a7c4814f8d60e26f64c5cda, type: 2}
     - target: {fileID: 4961293817279783717, guid: f33822e9022c81540af281dd14b065cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1049,7 +1034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34b436f0783c2184bba2955cfd2a3428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: {fileID: 11400000, guid: 40d23bae833ff1c4b9843e876d5b52e8, type: 2}
+  level: {fileID: 11400000, guid: b58cebed64a37ec46869e3411b028c32, type: 2}
 --- !u!1001 &687219979
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1067,26 +1052,11 @@ PrefabInstance:
       propertyPath: isMoving
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
-        type: 3}
-      propertyPath: colorIndex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
-        type: 3}
-      propertyPath: obstacleMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 46a829fe17360b840954e1f35cd1eb5b, type: 2}
-    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
-        type: 3}
-      propertyPath: obstacleLethalMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: c5d3de670d46de2478e0a241ee6463ac, type: 2}
     - target: {fileID: 4961293816728811154, guid: f33822e9022c81540af281dd14b065cc,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 46a829fe17360b840954e1f35cd1eb5b, type: 2}
+      objectReference: {fileID: 2100000, guid: e8dd1ae92a7c4814f8d60e26f64c5cda, type: 2}
     - target: {fileID: 4961293817279783717, guid: f33822e9022c81540af281dd14b065cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1510,26 +1480,11 @@ PrefabInstance:
       propertyPath: isMoving
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
-        type: 3}
-      propertyPath: colorIndex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
-        type: 3}
-      propertyPath: obstacleMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 46a829fe17360b840954e1f35cd1eb5b, type: 2}
-    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
-        type: 3}
-      propertyPath: obstacleLethalMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: c5d3de670d46de2478e0a241ee6463ac, type: 2}
     - target: {fileID: 4961293816728811154, guid: f33822e9022c81540af281dd14b065cc,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 46a829fe17360b840954e1f35cd1eb5b, type: 2}
+      objectReference: {fileID: 2100000, guid: e8dd1ae92a7c4814f8d60e26f64c5cda, type: 2}
     - target: {fileID: 4961293817279783717, guid: f33822e9022c81540af281dd14b065cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1778,16 +1733,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 812340927}
     m_Modifications:
-    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
-        type: 3}
-      propertyPath: isRotating
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4961293816728811154, guid: f33822e9022c81540af281dd14b065cc,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: e8dd1ae92a7c4814f8d60e26f64c5cda, type: 2}
     - target: {fileID: 4961293817279783717, guid: f33822e9022c81540af281dd14b065cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1867,26 +1812,11 @@ PrefabInstance:
       propertyPath: isMoving
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
-        type: 3}
-      propertyPath: colorIndex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
-        type: 3}
-      propertyPath: obstacleMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 46a829fe17360b840954e1f35cd1eb5b, type: 2}
-    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
-        type: 3}
-      propertyPath: obstacleLethalMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: c5d3de670d46de2478e0a241ee6463ac, type: 2}
     - target: {fileID: 4961293816728811154, guid: f33822e9022c81540af281dd14b065cc,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c5d3de670d46de2478e0a241ee6463ac, type: 2}
+      objectReference: {fileID: 2100000, guid: 9eb4b14d037a05746a8b361be06f03d6, type: 2}
     - target: {fileID: 4961293817279783717, guid: f33822e9022c81540af281dd14b065cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1987,26 +1917,11 @@ PrefabInstance:
       propertyPath: isMoving
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
-        type: 3}
-      propertyPath: colorIndex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
-        type: 3}
-      propertyPath: obstacleMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 46a829fe17360b840954e1f35cd1eb5b, type: 2}
-    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
-        type: 3}
-      propertyPath: obstacleLethalMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: c5d3de670d46de2478e0a241ee6463ac, type: 2}
     - target: {fileID: 4961293816728811154, guid: f33822e9022c81540af281dd14b065cc,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 46a829fe17360b840954e1f35cd1eb5b, type: 2}
+      objectReference: {fileID: 2100000, guid: e8dd1ae92a7c4814f8d60e26f64c5cda, type: 2}
     - target: {fileID: 4961293817279783717, guid: f33822e9022c81540af281dd14b065cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2339,26 +2254,11 @@ PrefabInstance:
       propertyPath: isMoving
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
-        type: 3}
-      propertyPath: colorIndex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
-        type: 3}
-      propertyPath: obstacleMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 46a829fe17360b840954e1f35cd1eb5b, type: 2}
-    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
-        type: 3}
-      propertyPath: obstacleLethalMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: c5d3de670d46de2478e0a241ee6463ac, type: 2}
     - target: {fileID: 4961293816728811154, guid: f33822e9022c81540af281dd14b065cc,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 46a829fe17360b840954e1f35cd1eb5b, type: 2}
+      objectReference: {fileID: 2100000, guid: e8dd1ae92a7c4814f8d60e26f64c5cda, type: 2}
     - target: {fileID: 4961293817279783717, guid: f33822e9022c81540af281dd14b065cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2851,26 +2751,11 @@ PrefabInstance:
       propertyPath: isMoving
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
-        type: 3}
-      propertyPath: colorIndex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
-        type: 3}
-      propertyPath: obstacleMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 46a829fe17360b840954e1f35cd1eb5b, type: 2}
-    - target: {fileID: 2776807663013620197, guid: f33822e9022c81540af281dd14b065cc,
-        type: 3}
-      propertyPath: obstacleLethalMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: c5d3de670d46de2478e0a241ee6463ac, type: 2}
     - target: {fileID: 4961293816728811154, guid: f33822e9022c81540af281dd14b065cc,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 46a829fe17360b840954e1f35cd1eb5b, type: 2}
+      objectReference: {fileID: 2100000, guid: e8dd1ae92a7c4814f8d60e26f64c5cda, type: 2}
     - target: {fileID: 4961293817279783717, guid: f33822e9022c81540af281dd14b065cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3066,7 +2951,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 9
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -3156,7 +3041,7 @@ PrefabInstance:
     - target: {fileID: 1243988669637835300, guid: b389801731d522d4cb96494dc3eaff09,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 23.5
+      value: 15.25
       objectReference: {fileID: 0}
     - target: {fileID: 1243988669637835300, guid: b389801731d522d4cb96494dc3eaff09,
         type: 3}

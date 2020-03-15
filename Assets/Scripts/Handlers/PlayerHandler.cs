@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 #pragma warning disable 0649
+[ExecuteInEditMode]
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerHandler : MonoBehaviour {
     [SerializeField] private Renderer[] visualRenderers;
@@ -29,15 +30,20 @@ public class PlayerHandler : MonoBehaviour {
     private void OnEnable() {
         GameManager.OnGameStart += SetInitialVelocity;
         GameManager.OnGameReset += ResetPlayer;
+        GameManager.OnGameReset += SetColor;
+        Level.OnPlayerColorChanged += SetColor;
     }
 
     private void OnDisable() {
         GameManager.OnGameStart -= SetInitialVelocity;
         GameManager.OnGameReset -= ResetPlayer;
+        GameManager.OnGameReset -= SetColor;
+        Level.OnPlayerColorChanged -= SetColor;
     }
 
     private void Start() {
         playerStartPos = transform.position;
+        SetColor();
     }
 
     private void Update() {
@@ -116,6 +122,7 @@ public class PlayerHandler : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.layer == LayerMask.NameToLayer("ColorChanger")) {
+            other.gameObject.GetComponent<Collider>().enabled = false;
             colorIndex++;
             SetColor();
         }
@@ -123,7 +130,7 @@ public class PlayerHandler : MonoBehaviour {
 
     public void SetColor() {
         foreach(Renderer visualRenderer in visualRenderers) {
-            visualRenderer.sharedMaterial.color = LevelSettings.Level.GetPlayerColor(0);
+            visualRenderer.sharedMaterial.color = LevelSettings.Level.GetPlayerColor(colorIndex);
         }
     }
 

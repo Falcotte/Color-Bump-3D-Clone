@@ -24,7 +24,7 @@ public class LevelManager : MonoSingleton<LevelManager> {
         if(levelOverride) {
             return levels[levelOverrideIndex];
         }
-        return levels[Random.Range(0, levels.Count)];
+        return levels[DataManager.Instance.Level % levels.Count];
     }
 
     public void LoadLevel(string name) {
