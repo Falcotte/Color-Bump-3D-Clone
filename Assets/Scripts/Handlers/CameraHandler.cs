@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[ExecuteInEditMode]
 public class CameraHandler : MonoSingleton<CameraHandler> {
     private float velocity => SettingsManager.GameSettings.MinVelocity;
 
@@ -20,10 +21,12 @@ public class CameraHandler : MonoSingleton<CameraHandler> {
 
     private void OnEnable() {
         GameManager.OnGameReset += ResetCameraPosition;
+        Level.OnBackgroundColorChanged += SetColor;
     }
 
     private void OnDisable() {
         GameManager.OnGameReset -= ResetCameraPosition;
+        Level.OnBackgroundColorChanged -= SetColor;
     }
 
     private void Start() {

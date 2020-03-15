@@ -66,12 +66,14 @@ public class Obstacle : MonoBehaviour {
     }
 
     private void OnDrawGizmos() {
-        if(LevelManager.Instance.ShowObstacleIcons) {
-            if(isLethal) {
-                Gizmos.DrawIcon(transform.position, "sv_icon_dot14_pix16_gizmo");
-            }
-            else {
-                Gizmos.DrawIcon(transform.position, "sv_icon_dot10_pix16_gizmo");
+        if(LevelManager.Instance != null) {
+            if(LevelManager.Instance.ShowObstacleIcons) {
+                if(isLethal) {
+                    Gizmos.DrawIcon(transform.position, "sv_icon_dot14_pix16_gizmo");
+                }
+                else {
+                    Gizmos.DrawIcon(transform.position, "sv_icon_dot10_pix16_gizmo");
+                }
             }
         }
     }

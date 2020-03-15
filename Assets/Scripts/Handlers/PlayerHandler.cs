@@ -123,7 +123,7 @@ public class PlayerHandler : MonoBehaviour {
 
     public void SetColor() {
         foreach(Renderer visualRenderer in visualRenderers) {
-            visualRenderer.sharedMaterial.color = LevelSettings.Level.GetPlayerColor(colorIndex);
+            visualRenderer.sharedMaterial.color = LevelSettings.Level.GetPlayerColor(0);
         }
     }
 

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[ExecuteInEditMode]
 public class Ground : MonoBehaviour {
     [SerializeField] private Renderer visualRenderer;
     public Renderer VisualRenderer => visualRenderer;
@@ -10,26 +11,36 @@ public class Ground : MonoBehaviour {
     private float colorChangeDuration = 2f;
     private float timer;
 
+    private void OnEnable() {
+        Level.OnGroundColorChanged += SetColor;
+    }
+
+    private void OnDisable() {
+        Level.OnGroundColorChanged -= SetColor;
+    }
+
     private void Start() {
         currentColorIndex = GameManager.Instance.currentGroundColorIndex;
     }
 
     private void Update() {
-        if(currentColorIndex != GameManager.Instance.currentGroundColorIndex) {
-            previousColorIndex = currentColorIndex;
-            currentColorIndex = GameManager.Instance.currentGroundColorIndex;
-            changingColor = true;
-        }
-
-        if(changingColor) {
-            if(timer <= colorChangeDuration) {
-                ChangeColor(previousColorIndex, timer);
-                timer += Time.deltaTime;
+        if(Application.isPlaying) {
+            if(currentColorIndex != GameManager.Instance.currentGroundColorIndex) {
+                previousColorIndex = currentColorIndex;
+                currentColorIndex = GameManager.Instance.currentGroundColorIndex;
+                changingColor = true;
             }
-            else {
-                ChangeColor(previousColorIndex, colorChangeDuration);
-                timer = 0f;
-                changingColor = false;
+
+            if(changingColor) {
+                if(timer <= colorChangeDuration) {
+                    ChangeColor(previousColorIndex, timer);
+                    timer += Time.deltaTime;
+                }
+                else {
+                    ChangeColor(previousColorIndex, colorChangeDuration);
+                    timer = 0f;
+                    changingColor = false;
+                }
             }
         }
     }

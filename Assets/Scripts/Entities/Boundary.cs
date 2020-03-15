@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using NaughtyAttributes;
 
+[ExecuteInEditMode]
 public class Boundary : MonoBehaviour {
     public enum BoundaryHeight { Low, High };
     public BoundaryHeight height;
@@ -19,26 +20,36 @@ public class Boundary : MonoBehaviour {
     private float colorChangeDuration = 2f;
     private float timer;
 
+    private void OnEnable() {
+        Level.OnBoundaryColorChanged += SetColor;
+    }
+
+    private void OnDisable() {
+        Level.OnBoundaryColorChanged -= SetColor;
+    }
+
     private void Start() {
         currentColorIndex = GameManager.Instance.currentBoundaryColorIndex;
     }
 
     private void Update() {
-        if(currentColorIndex != GameManager.Instance.currentBoundaryColorIndex) {
-            previousColorIndex = currentColorIndex;
-            currentColorIndex = GameManager.Instance.currentBoundaryColorIndex;
-            changingColor = true;
-        }
-
-        if(changingColor) {
-            if(timer <= colorChangeDuration) {
-                ChangeColor(previousColorIndex, timer);
-                timer += Time.deltaTime;
+        if(Application.isPlaying) {
+            if(currentColorIndex != GameManager.Instance.currentBoundaryColorIndex) {
+                previousColorIndex = currentColorIndex;
+                currentColorIndex = GameManager.Instance.currentBoundaryColorIndex;
+                changingColor = true;
             }
-            else {
-                ChangeColor(previousColorIndex, colorChangeDuration);
-                timer = 0f;
-                changingColor = false;
+
+            if(changingColor) {
+                if(timer <= colorChangeDuration) {
+                    ChangeColor(previousColorIndex, timer);
+                    timer += Time.deltaTime;
+                }
+                else {
+                    ChangeColor(previousColorIndex, colorChangeDuration);
+                    timer = 0f;
+                    changingColor = false;
+                }
             }
         }
     }
