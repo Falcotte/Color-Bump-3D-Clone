@@ -24,7 +24,6 @@ public class GameManager : MonoSingleton<GameManager> {
     public int currentBoundaryColorIndex;
     public int currentBackgroundColorIndex;
 
-
     protected new void Awake() {
         base.Awake();
 
