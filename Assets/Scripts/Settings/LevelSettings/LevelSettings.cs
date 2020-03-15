@@ -9,6 +9,5 @@ public class LevelSettings : MonoSingleton<LevelSettings> {
             return Instance.level;
         }
     }
-
     public Level level;
 }

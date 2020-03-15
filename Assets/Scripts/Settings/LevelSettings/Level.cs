@@ -9,12 +9,12 @@ public class Level : ScriptableObject {
     [SerializeField] private float length;
 
     [Header("Theme")]
-    [SerializeField] [ReorderableList] private List<Color> groundColors;
-    [SerializeField] [ReorderableList] private List<Color> boundaryColors;
-    [SerializeField] [ReorderableList] private List<Color> backgroundColors;
+    [SerializeField] private List<Color> groundColors;
+    [SerializeField] private List<Color> boundaryColors;
+    [SerializeField] private List<Color> backgroundColors;
 
-    [SerializeField] [ReorderableList] private List<Color> playerColors;
-    [SerializeField] [ReorderableList] private List<Color> obstacleColors;
+    [SerializeField] private List<Color> playerColors;
+    [SerializeField] private List<Color> obstacleColors;
 
     public float GetLevelLength() {
         return length;

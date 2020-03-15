@@ -5,6 +5,7 @@
 public class GameSettings : ScriptableObject {
     [Header("Velocity")]
     [SerializeField] private float minVelocity;
+    [SerializeField] private float maxVelocity;
     [SerializeField] private float deceleration;    //How fast does the player return to minVelocity
 
     [Header("Input")]
@@ -14,6 +15,11 @@ public class GameSettings : ScriptableObject {
     public float MinVelocity {
         get { return PlayerPrefs.GetFloat("MinVelocity", minVelocity); }
         set { PlayerPrefs.SetFloat("MinVelocity", value); }
+    }
+
+    public float MaxVelocity {
+        get { return PlayerPrefs.GetFloat("MaxVelocity", maxVelocity); }
+        set { PlayerPrefs.SetFloat("MaxVelocity", value); }
     }
 
     public float Deceleration {

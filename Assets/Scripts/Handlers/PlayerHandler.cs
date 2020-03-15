@@ -14,6 +14,7 @@ public class PlayerHandler : MonoBehaviour {
     private float inputXSensitivity => SettingsManager.GameSettings.InputXSensitivity;
     private float inputYSensitivity => SettingsManager.GameSettings.InputYSensitivity;
     private float minVelocity => SettingsManager.GameSettings.MinVelocity;
+    private float maxVelocity => SettingsManager.GameSettings.MaxVelocity;
     private float deceleration => SettingsManager.GameSettings.Deceleration;
 
     private Vector3 inputVector;
@@ -73,6 +74,7 @@ public class PlayerHandler : MonoBehaviour {
         if(InputManager.IsTouching) {
             if(inputVector.sqrMagnitude > 0f) {
                 currentVelocity = (Vector3.forward * minVelocity) + inputVector;
+                currentVelocity = currentVelocity.normalized * Mathf.Clamp(currentVelocity.magnitude, currentVelocity.magnitude, maxVelocity);
             }
             else {
                 currentVelocity = Vector3.forward * minVelocity;
@@ -104,7 +106,7 @@ public class PlayerHandler : MonoBehaviour {
                 newZVelocity = 0f;
             }
 
-            currentVelocity = new Vector3(newXVelocity, 0f, newZVelocity);
+            currentVelocity = new Vector3(newXVelocity, 0f, Mathf.Clamp(newZVelocity, newZVelocity,maxVelocity));
         }
     }
 
