@@ -128,9 +128,7 @@ public class PlayerHandler : MonoBehaviour {
         }
 
         else if(other.gameObject.layer == LayerMask.NameToLayer("FinishLine")) {
-            GameManager.Instance.LevelPassed = true;
-            UIManager.Instance.SetLevelEndPanelVisibility(true);
-            //GameManager.Instance.CurrentState = GameStates.LevelEnd;
+            Win();
         }
     }
 
@@ -172,6 +170,13 @@ public class PlayerHandler : MonoBehaviour {
         GameManager.Instance.CurrentState = GameStates.LevelEnd;
 
         UIManager.Instance.SetLevelEndPanelVisibility(true);
+    }
+
+    public void Win() {
+        GameManager.Instance.LevelPassed = true;
+        UIManager.Instance.SetLevelEndPanelVisibility(true);
+        //GameManager.Instance.CurrentState = GameStates.LevelEnd;
+        AdjustTimeScale(true);
     }
 
     private void AdjustTimeScale(bool slowDown) {

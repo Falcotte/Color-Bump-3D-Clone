@@ -6,7 +6,7 @@ public class ColorChanger : MonoBehaviour {
     [SerializeField] private Renderer[] wireRenderers;
     public Renderer[] WireRenderers => wireRenderers;
 
-    private int colorIndex;
+    [SerializeField] private int colorIndex;
 
     public void SetColor() {
         foreach(Renderer poleRenderer in poleRenderers) {
@@ -15,10 +15,10 @@ public class ColorChanger : MonoBehaviour {
 
         for(int i = 0; i < wireRenderers.Length; i++) {
             if(i % 2 == 0) {
-                wireRenderers[i].sharedMaterial.color = LevelSettings.Level.GetPlayerColor(colorIndex);
+                wireRenderers[i].sharedMaterial.color = LevelSettings.Level.GetObstacleColor(colorIndex);
             }
             else {
-                wireRenderers[i].sharedMaterial.color = LevelSettings.Level.GetObstacleColor(colorIndex);
+                wireRenderers[i].sharedMaterial.color = LevelSettings.Level.GetLethalObstacleColor(colorIndex);
             }
         }
     }

@@ -14,9 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   length: 0
   groundColors:
-  - {r: 0.5283019, g: 0.20683517, b: 0.20683517, a: 1}
-  boundaryColors: []
-  backgroundColors: []
-  playerColors: []
-  obstacleColors: []
-  lethalObstacleColors: []
+  - {r: 0.5754717, g: 0.411197, b: 0.18729976, a: 1}
+  boundaryColors:
+  - {r: 0.745283, g: 0.6688432, b: 0.48162156, a: 1}
+  backgroundColors:
+  - {r: 0.8301887, g: 0.043075833, b: 0.33478904, a: 1}
+  playerColors:
+  - {r: 0.15328665, g: 0.6509434, b: 0.13203098, a: 1}
+  - {r: 0.3679245, g: 0.16140084, b: 0.3570549, a: 1}
+  obstacleColors:
+  - {r: 0.15328665, g: 0.6509434, b: 0.13203098, a: 1}
+  - {r: 0.3679245, g: 0.16140084, b: 0.3570549, a: 1}
+  lethalObstacleColors:
+  - {r: 0.3679245, g: 0.16140084, b: 0.3570549, a: 1}
+  - {r: 0.15328665, g: 0.6509434, b: 0.13203098, a: 1}

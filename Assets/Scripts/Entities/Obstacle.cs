@@ -18,8 +18,8 @@ public class Obstacle : MonoBehaviour {
     [SerializeField] private bool isRotating;
     public bool IsRotating => isRotating;
 
-    [SerializeField] private Material obstacleMaterial;
-    [SerializeField] private Material obstacleLethalMaterial;
+    [SerializeField] private Material[] obstacleMaterials;
+    [SerializeField] private Material[] obstacleLethalMaterials;
 
     [SerializeField] private int colorIndex;
 
@@ -45,6 +45,8 @@ public class Obstacle : MonoBehaviour {
 
         else if(collision.gameObject.layer == LayerMask.NameToLayer("Obstacle")) {
             if(isMoving || isRotating) {
+                isMoving = false;
+                isRotating = false;
                 DOTween.Kill(transform);
             }
             rb.useGravity = true;
@@ -54,36 +56,36 @@ public class Obstacle : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.layer == LayerMask.NameToLayer("ColorChanger")) {
             colorIndex++;
-            ChangeMaterial();
+            SetMaterial();
             SetColor();
         }
     }
 
     public void SetMaterial() {
         if(isLethal) {
-            if(visualRenderer.sharedMaterial != obstacleLethalMaterial) {
-                visualRenderer.sharedMaterial = obstacleLethalMaterial;
+            if(visualRenderer.sharedMaterial != obstacleLethalMaterials[colorIndex % obstacleLethalMaterials.Length]) {
+                visualRenderer.sharedMaterial = obstacleLethalMaterials[colorIndex % obstacleLethalMaterials.Length];
             }
         }
         else {
-            if(visualRenderer.sharedMaterial != obstacleMaterial) {
-                visualRenderer.sharedMaterial = obstacleMaterial;
+            if(visualRenderer.sharedMaterial != obstacleMaterials[colorIndex % obstacleMaterials.Length]) {
+                visualRenderer.sharedMaterial = obstacleMaterials[colorIndex % obstacleMaterials.Length];
             }
         }
     }
-    
-    public void ChangeMaterial() {
-        if(isLethal) {
-            if(visualRenderer.material != obstacleMaterial) {
-                visualRenderer.material = obstacleMaterial;
-            }
-        }
-        else {
-            if(visualRenderer.material != obstacleLethalMaterial) {
-                visualRenderer.material = obstacleLethalMaterial;
-            }
-        }
-    }
+
+    //public void ChangeMaterial() {
+    //    if(isLethal) {
+    //        if(visualRenderer.material != obstacleMaterial) {
+    //            visualRenderer.material = obstacleMaterial;
+    //        }
+    //    }
+    //    else {
+    //        if(visualRenderer.material != obstacleLethalMaterial) {
+    //            visualRenderer.material = obstacleLethalMaterial;
+    //        }
+    //    }
+    //}
 
     public void SetColor() {
         if(IsLethal) {

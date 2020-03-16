@@ -157,7 +157,13 @@ MonoBehaviour:
   rb: {fileID: 8716141254184446220}
   isLethal: 0
   isMoving: 0
-  obstacleMaterial: {fileID: 2100000, guid: e8dd1ae92a7c4814f8d60e26f64c5cda, type: 2}
-  obstacleLethalMaterial: {fileID: 2100000, guid: 9eb4b14d037a05746a8b361be06f03d6,
-    type: 2}
+  isRotating: 0
+  obstacleMaterials:
+  - {fileID: 2100000, guid: e8dd1ae92a7c4814f8d60e26f64c5cda, type: 2}
+  - {fileID: 2100000, guid: 08b9d0d726e8eee40a16f486b6b01425, type: 2}
+  - {fileID: 2100000, guid: 46a829fe17360b840954e1f35cd1eb5b, type: 2}
+  obstacleLethalMaterials:
+  - {fileID: 2100000, guid: 9eb4b14d037a05746a8b361be06f03d6, type: 2}
+  - {fileID: 2100000, guid: 9e8b563d7f7a9004ebd543720018d86b, type: 2}
+  - {fileID: 2100000, guid: c5d3de670d46de2478e0a241ee6463ac, type: 2}
   colorIndex: 0

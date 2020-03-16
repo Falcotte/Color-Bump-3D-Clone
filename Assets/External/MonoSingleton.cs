@@ -7,7 +7,7 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
             if(instance == null) {
                 instance = FindObjectOfType<T>();
                 if(instance == null) {
-                    Debug.LogError($"Cannot find the instance of {typeof(T).FullName}");
+                    Debug.LogWarning($"Cannot find the instance of {typeof(T).FullName}");
                 }
             }
             return instance;
@@ -19,7 +19,7 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
             instance = this as T;
         }
         else {
-            Debug.LogError($"Duplicate instance of {typeof(T).FullName}, destroying...");
+            Debug.LogWarning($"Duplicate instance of {typeof(T).FullName}, destroying...");
             Destroy(gameObject);
         }
     }
