@@ -7188,7 +7188,7 @@ MonoBehaviour:
   - Level4
   levelOverrideIndex: 0
   levelOverride: 0
-  designMode: 0
+  designMode: 1
   showObstacleIcons: 1
 --- !u!114 &1512179553
 MonoBehaviour:

@@ -82,7 +82,7 @@ public class PlayerHandler : MonoBehaviour {
                 currentVelocity = (Vector3.forward * minVelocity) + inputVector;
                 currentVelocity = currentVelocity.normalized * Mathf.Clamp(currentVelocity.magnitude, currentVelocity.magnitude, maxVelocity);
             }
-            else {
+            else if(inputVector.sqrMagnitude < Mathf.Epsilon){
                 currentVelocity = Vector3.forward * minVelocity;
             }
         }
@@ -108,11 +108,11 @@ public class PlayerHandler : MonoBehaviour {
             else {
                 newZVelocity = currentVelocity.z + deceleration * Time.fixedDeltaTime;
             }
-            if(Mathf.Abs(currentVelocity.z) <= 0.5f) {
-                newZVelocity = 0f;
-            }
+            //if(Mathf.Abs(currentVelocity.z) <= 0.5f) {
+            //    newZVelocity = 0f;
+            //}
 
-            currentVelocity = new Vector3(newXVelocity, 0f, Mathf.Clamp(newZVelocity, newZVelocity,maxVelocity));
+            currentVelocity = new Vector3(newXVelocity, 0f, Mathf.Min(newZVelocity, maxVelocity));
         }
     }
 

@@ -99,12 +99,14 @@ public class Boundary : MonoBehaviour {
         Gizmos.DrawWireCube(boundaryLeft.position + Vector3.left * 5 * 0.12f, new Vector3(0.12f * 11, 0.12f * 5, boundaryLength));
         Gizmos.DrawWireCube(boundaryRight.position + Vector3.right * 5 * 0.12f, new Vector3(0.12f * 11, 0.12f * 5, boundaryLength));
 
+#if UNITY_EDITOR
         if(height == BoundaryHeight.Low) {
             UnityEditor.Handles.Label(transform.position, "Boundary Low");
         }
         else {
             UnityEditor.Handles.Label(transform.position, "Boundary High");
         }
+#endif
     }
-    #endregion
+#endregion
 }

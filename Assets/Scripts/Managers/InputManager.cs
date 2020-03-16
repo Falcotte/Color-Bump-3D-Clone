@@ -19,6 +19,8 @@ public class InputManager : MonoSingleton<InputManager> {
     }
 
     private void HandleInput() {
+        
+
 #if UNITY_EDITOR
         dragDelta = Vector2.zero;
 
@@ -32,8 +34,10 @@ public class InputManager : MonoSingleton<InputManager> {
 #else
         dragDelta = Vector2.zero;
         touchPos = Vector2.zero;
+        isTouching = false;
 
         if(Input.touchCount > 0) {
+            isTouching = true;
             var mainTouch = Input.touches[0];
             if(mainTouch.phase == TouchPhase.Moved || mainTouch.phase == TouchPhase.Ended || mainTouch.phase == TouchPhase.Canceled) {
                 dragDelta = mainTouch.deltaPosition;

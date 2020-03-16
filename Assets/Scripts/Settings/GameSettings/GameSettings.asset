@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minVelocity: 2
   maxVelocity: 16
-  deceleration: 20
-  inputXSensitivity: 1.5
-  inputYSensitivity: 3
+  deceleration: 30
+  inputXSensitivity: 3
+  inputYSensitivity: 5
