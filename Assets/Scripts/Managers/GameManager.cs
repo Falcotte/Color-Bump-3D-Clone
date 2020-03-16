@@ -52,12 +52,13 @@ public class GameManager : MonoSingleton<GameManager> {
         OnGameStart?.Invoke();
         LevelPassed = false;
         CurrentState = GameStates.Gameplay;
+        UIManager.Instance.SetSettingsButtonVisibility(false);
     }
 
     private void ResetGame() {
         CurrentState = GameStates.MainMenu;
         LevelManager.Instance.LoadLevel(LevelManager.Instance.GetNextLevel());
-
+        UIManager.Instance.SetSettingsButtonVisibility(true);
         OnGameReset?.Invoke();
     }
 

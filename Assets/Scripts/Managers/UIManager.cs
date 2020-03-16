@@ -9,6 +9,7 @@ public class UIManager : MonoSingleton<UIManager> {
     [SerializeField] private Canvas UICanvas;
     [SerializeField] private GameObject levelWinPanel;
     [SerializeField] private GameObject levelFailPanel;
+    [SerializeField] private GameObject settingsPanel;
     [SerializeField] private TextMeshProUGUI stageText;
     [SerializeField] private Image progressBar;
     [SerializeField] private GameObject settingsButton;
@@ -58,6 +59,23 @@ public class UIManager : MonoSingleton<UIManager> {
                 levelFailPanel.SetActive(false);
             }
         }
+    }
+
+    public void SetVibrationToggleStatus() {
+        if(DataManager.Instance.Vibration == 0) {
+            DataManager.Instance.Vibration = 1;
+        }
+        else {
+            DataManager.Instance.Vibration = 0;
+        }
+    }
+
+    public void OpenSettingsPanel() {
+        settingsPanel.SetActive(true);
+    }
+
+    public void CloseSettingsPanel() {
+        settingsPanel.SetActive(false);
     }
 
     public void SetProgress(float progress) {

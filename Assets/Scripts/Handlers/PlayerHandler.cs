@@ -175,7 +175,8 @@ public class PlayerHandler : MonoBehaviour {
     public void Win() {
         GameManager.Instance.LevelPassed = true;
         UIManager.Instance.SetLevelEndPanelVisibility(true);
-        //GameManager.Instance.CurrentState = GameStates.LevelEnd;
+        DataManager.Instance.Level++;
+        GameManager.Instance.CurrentState = GameStates.LevelEnd;
         AdjustTimeScale(true);
     }
 
