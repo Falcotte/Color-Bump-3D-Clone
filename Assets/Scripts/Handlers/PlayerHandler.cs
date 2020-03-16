@@ -170,6 +170,10 @@ public class PlayerHandler : MonoBehaviour {
         GameManager.Instance.CurrentState = GameStates.LevelEnd;
 
         UIManager.Instance.SetLevelEndPanelVisibility(true);
+
+        if(DataManager.Instance.Vibration == 1) {
+            Taptic.Failure();
+        }
     }
 
     public void Win() {
@@ -178,6 +182,9 @@ public class PlayerHandler : MonoBehaviour {
         DataManager.Instance.Level++;
         GameManager.Instance.CurrentState = GameStates.LevelEnd;
         AdjustTimeScale(true);
+        if(DataManager.Instance.Vibration == 1) {
+            Taptic.Success();
+        }
     }
 
     private void AdjustTimeScale(bool slowDown) {

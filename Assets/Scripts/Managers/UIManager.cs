@@ -12,11 +12,13 @@ public class UIManager : MonoSingleton<UIManager> {
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private TextMeshProUGUI stageText;
     [SerializeField] private Image progressBar;
+    [SerializeField] private GameObject startGameButton;
     [SerializeField] private GameObject settingsButton;
     [SerializeField] private TextMeshProUGUI currentLevelText;
     [SerializeField] private TextMeshProUGUI nextLevelText;
     [SerializeField] private TextMeshProUGUI goldAmountText;
     [SerializeField] private GameObject handImage;
+    [SerializeField] private GameObject vibrationImage;
 
     private void Start() {
         currentLevelText.text = (DataManager.Instance.Level + 1).ToString();
@@ -25,16 +27,28 @@ public class UIManager : MonoSingleton<UIManager> {
 
     private void OnEnable() {
         GameManager.OnGameStart += SetHandImageOff;
+        GameManager.OnGameStart += SetStartGameButtonOff;
         GameManager.OnGameStart += SetProgressBarColor;
+        GameManager.OnGameReset += SetStartGameButtonOn;
         GameManager.OnGameReset += SetLevelEndPanelVisibilityOff;
         GameManager.OnGameReset += SetHandImageOn;
     }
 
     private void OnDisable() {
         GameManager.OnGameStart -= SetHandImageOff;
+        GameManager.OnGameStart -= SetStartGameButtonOff;
         GameManager.OnGameStart -= SetProgressBarColor;
+        GameManager.OnGameReset -= SetStartGameButtonOn;
         GameManager.OnGameReset -= SetLevelEndPanelVisibilityOff;
         GameManager.OnGameReset -= SetHandImageOn;
+    }
+
+    private void SetStartGameButtonOff() {
+        startGameButton.SetActive(false);
+    }
+
+    private void SetStartGameButtonOn() {
+        startGameButton.SetActive(true);
     }
 
     private void SetLevelEndPanelVisibilityOff() {
@@ -64,14 +78,23 @@ public class UIManager : MonoSingleton<UIManager> {
     public void SetVibrationToggleStatus() {
         if(DataManager.Instance.Vibration == 0) {
             DataManager.Instance.Vibration = 1;
+            vibrationImage.SetActive(true);
+            Taptic.Vibrate();
         }
         else {
             DataManager.Instance.Vibration = 0;
+            vibrationImage.SetActive(false);
         }
     }
 
     public void OpenSettingsPanel() {
         settingsPanel.SetActive(true);
+        if(DataManager.Instance.Vibration == 0) {
+            vibrationImage.SetActive(false);
+        }
+        else {
+            vibrationImage.SetActive(true);
+        }
     }
 
     public void CloseSettingsPanel() {

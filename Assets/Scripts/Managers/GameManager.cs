@@ -39,10 +39,7 @@ public class GameManager : MonoSingleton<GameManager> {
 
     private void Update() {
         if(Input.GetMouseButtonDown(0)) {
-            if(CurrentState == GameStates.MainMenu) {
-                StartGame();
-            }
-            else if(currentState == GameStates.LevelEnd) {
+            if(currentState == GameStates.LevelEnd) {
                 ResetGame();
             }
         }

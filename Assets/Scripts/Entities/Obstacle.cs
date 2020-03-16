@@ -48,6 +48,14 @@ public class Obstacle : MonoBehaviour {
                 isMoving = false;
                 isRotating = false;
                 DOTween.Kill(transform);
+                DOTweenAnimation anim = GetComponent<DOTweenAnimation>();
+                if(anim != null) {
+                    Destroy(anim);
+                }
+                DOTweenPath path = GetComponent<DOTweenPath>();
+                if(path != null) {
+                    Destroy(path);
+                }
             }
             rb.useGravity = true;
         }
