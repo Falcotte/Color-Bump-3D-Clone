@@ -12,10 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f66897ed9ec3c44cadf7d636956d301, type: 3}
   m_Name: Level1
   m_EditorClassIdentifier: 
-  length: 0
+  length: 80
   groundColors:
-  - {r: 0.5283019, g: 0.20683517, b: 0.20683517, a: 1}
-  boundaryColors: []
-  backgroundColors: []
-  playerColors: []
-  obstacleColors: []
+  - {r: 0.6415094, g: 0.51950586, b: 0.30562478, a: 1}
+  boundaryColors:
+  - {r: 0.4716981, g: 0.3696115, b: 0.09567462, a: 1}
+  backgroundColors:
+  - {r: 0.3647059, g: 0.78431374, b: 0.92941177, a: 1}
+  playerColors:
+  - {r: 0.5283019, g: 0, b: 0.40032807, a: 1}
+  - {r: 1, g: 0.41596138, b: 0, a: 1}
+  obstacleColors:
+  - {r: 0.5283019, g: 0, b: 0.40032807, a: 1}
+  - {r: 1, g: 0.41596138, b: 0, a: 1}
+  lethalObstacleColors:
+  - {r: 1, g: 0.41596138, b: 0, a: 1}
+  - {r: 0.5283019, g: 0, b: 0.40032807, a: 1}

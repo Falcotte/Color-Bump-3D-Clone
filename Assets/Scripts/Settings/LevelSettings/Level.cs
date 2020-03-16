@@ -30,7 +30,8 @@ public class Level : ScriptableObject {
                               OnBackgroundColorChanged,
                               OnPlayerColorChanged,
                               OnObstacleColorChanged,
-                              OnLethalObstacleColorChanged;
+                              OnLethalObstacleColorChanged,
+                              OnColorChangerColorChanged;
 
     public float GetLevelLength() {
         return length;
@@ -58,9 +59,13 @@ public class Level : ScriptableObject {
         OnBoundaryColorChanged?.Invoke();
     }
 
+    public void ColorChangerColorChanged() {
+        OnColorChangerColorChanged?.Invoke();
+    }
+         
     public Color GetBackgroundColor(int index) {
         if(backgroundColors.Count > 0) {
-            return backgroundColors[index % boundaryColors.Count];
+            return backgroundColors[index % backgroundColors.Count];
         }
         return Color.black;
     }
@@ -100,5 +105,15 @@ public class Level : ScriptableObject {
 
     public void LethalObstacleColorChanged() {
         OnLethalObstacleColorChanged?.Invoke();
+    }
+
+    public void ForceUpdateColors() {
+        GroundColorChanged();
+        BoundaryColorChanged();
+        BackgroundColorChanged();
+        PlayerColorChanged();
+        ObstacleColorChanged();
+        LethalObstacleColorChanged();
+        ColorChangerColorChanged();
     }
 }

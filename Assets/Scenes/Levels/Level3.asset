@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f66897ed9ec3c44cadf7d636956d301, type: 3}
   m_Name: Level3
   m_EditorClassIdentifier: 
-  length: 0
+  length: 80
   groundColors:
   - {r: 0.5754717, g: 0.411197, b: 0.18729976, a: 1}
   boundaryColors:

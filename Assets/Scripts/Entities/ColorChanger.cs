@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[ExecuteInEditMode]
 public class ColorChanger : MonoBehaviour {
     [SerializeField] private Renderer[] poleRenderers;
     public Renderer[] PoleRenderers => poleRenderers;
@@ -7,6 +8,14 @@ public class ColorChanger : MonoBehaviour {
     public Renderer[] WireRenderers => wireRenderers;
 
     [SerializeField] private int colorIndex;
+
+    private void OnEnable() {
+        Level.OnColorChangerColorChanged += SetColor;
+    }
+
+    private void OnDisable() {
+        Level.OnColorChangerColorChanged -= SetColor;
+    }
 
     public void SetColor() {
         foreach(Renderer poleRenderer in poleRenderers) {

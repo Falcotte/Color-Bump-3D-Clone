@@ -42,12 +42,7 @@ public class LevelEditor : Editor {
         EditorGUILayout.Space();
 
         if(GUILayout.Button("Force Update Colors")) {
-            level.GroundColorChanged();
-            level.BoundaryColorChanged();
-            level.BackgroundColorChanged();
-            level.PlayerColorChanged();
-            level.ObstacleColorChanged();
-            level.LethalObstacleColorChanged();
+            level.ForceUpdateColors();
         }
         
         EditorGUILayout.Space();

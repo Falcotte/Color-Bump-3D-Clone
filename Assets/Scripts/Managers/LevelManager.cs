@@ -24,6 +24,7 @@ public class LevelManager : MonoSingleton<LevelManager> {
         if(levelOverride) {
             return levels[levelOverrideIndex];
         }
+        Debug.Log(DataManager.Instance.Level);
         return levels[DataManager.Instance.Level % levels.Count];
     }
 

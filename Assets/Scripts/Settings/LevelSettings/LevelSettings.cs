@@ -13,4 +13,8 @@ public class LevelSettings : MonoSingleton<LevelSettings> {
         }
     }
     public Level level;
+
+    private void Start() {
+        level.ForceUpdateColors();
+    }
 }
