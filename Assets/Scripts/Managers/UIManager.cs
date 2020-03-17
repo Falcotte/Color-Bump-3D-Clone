@@ -21,26 +21,29 @@ public class UIManager : MonoSingleton<UIManager> {
     [SerializeField] private GameObject vibrationImage;
 
     private void Start() {
-        currentLevelText.text = (DataManager.Instance.Level + 1).ToString();
-        nextLevelText.text = (DataManager.Instance.Level + 2).ToString();
+        SetLevelText();
     }
 
     private void OnEnable() {
         GameManager.OnGameStart += SetHandImageOff;
         GameManager.OnGameStart += SetStartGameButtonOff;
         GameManager.OnGameStart += SetProgressBarColor;
+        GameManager.OnGameReset += ResetProgress;
         GameManager.OnGameReset += SetStartGameButtonOn;
         GameManager.OnGameReset += SetLevelEndPanelVisibilityOff;
         GameManager.OnGameReset += SetHandImageOn;
+        GameManager.OnGameReset += SetLevelText;
     }
 
     private void OnDisable() {
         GameManager.OnGameStart -= SetHandImageOff;
         GameManager.OnGameStart -= SetStartGameButtonOff;
         GameManager.OnGameStart -= SetProgressBarColor;
+        GameManager.OnGameReset -= ResetProgress;
         GameManager.OnGameReset -= SetStartGameButtonOn;
         GameManager.OnGameReset -= SetLevelEndPanelVisibilityOff;
         GameManager.OnGameReset -= SetHandImageOn;
+        GameManager.OnGameReset -= SetLevelText;
     }
 
     private void SetStartGameButtonOff() {
@@ -49,6 +52,11 @@ public class UIManager : MonoSingleton<UIManager> {
 
     private void SetStartGameButtonOn() {
         startGameButton.SetActive(true);
+    }
+
+    private void SetLevelText() {
+        currentLevelText.text = (DataManager.Instance.Level + 1).ToString();
+        nextLevelText.text = (DataManager.Instance.Level + 2).ToString();
     }
 
     private void SetLevelEndPanelVisibilityOff() {
@@ -107,6 +115,10 @@ public class UIManager : MonoSingleton<UIManager> {
 
     public void SetProgressBarColor() {
         progressBar.color = LevelSettings.Level.GetPlayerColor(0);
+    }
+
+    private void ResetProgress() {
+        SetProgress(0);
     }
 
     public void SetSettingsButtonVisibility(bool visible) {

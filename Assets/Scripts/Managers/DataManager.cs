@@ -3,7 +3,7 @@
 public class DataManager : MonoSingleton<DataManager> {
     [Header("Player Data")]
     [SerializeField] private int level = 0;
-    [SerializeField] private int vibration = 0;
+    [SerializeField] private int vibration = 1;
 
     public int Level {
         get { return PlayerPrefs.GetInt("Level", level); }

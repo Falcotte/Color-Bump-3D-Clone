@@ -30,6 +30,7 @@ public class PlayerHandler : MonoBehaviour {
     private void OnEnable() {
         GameManager.OnGameStart += SetInitialVelocity;
         GameManager.OnGameReset += ResetPlayer;
+        GameManager.OnGameReset += ResetColorIndex;
         GameManager.OnGameReset += SetColor;
         Level.OnPlayerColorChanged += SetColor;
     }
@@ -37,6 +38,7 @@ public class PlayerHandler : MonoBehaviour {
     private void OnDisable() {
         GameManager.OnGameStart -= SetInitialVelocity;
         GameManager.OnGameReset -= ResetPlayer;
+        GameManager.OnGameReset -= ResetColorIndex;
         GameManager.OnGameReset -= SetColor;
         Level.OnPlayerColorChanged -= SetColor;
     }
@@ -59,6 +61,10 @@ public class PlayerHandler : MonoBehaviour {
             SetVelocity();
             Move();
         }
+    }
+
+    private void ResetColorIndex() {
+        colorIndex = 0;
     }
 
     private void HandleControls() {

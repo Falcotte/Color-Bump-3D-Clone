@@ -33,6 +33,10 @@ public class Obstacle : MonoBehaviour {
         Level.OnLethalObstacleColorChanged -= SetColor;
     }
 
+    private void Start() {
+        Debug.Log("qweqwe");
+    }
+
     private void OnCollisionEnter(Collision collision) {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Player")) {
             rb.useGravity = true;
